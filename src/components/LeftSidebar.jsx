@@ -15,10 +15,7 @@ const LeftSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    // const handleItemClick = (label) => {
-    //     setActiveItem(label);
-    // };
-
+    
     const handleItemClick = (label, path) => {
         setActiveItem(label);
         navigate(path);
@@ -58,12 +55,6 @@ const LeftSidebar = () => {
                         label="Search"
                         isActive={activeItem === 'Search'}
                         onClick={() => handleItemClick('Search', '/search')}
-                    />
-                    <SidebarItem
-                        icon={<Compass size={24} />}
-                        label="Explore"
-                        isActive={activeItem === 'Explore'}
-                        onClick={() => handleItemClick('Explore', '/explore')}
                     />
                     <SidebarItem
                         icon={<Film size={24} />}
@@ -128,3 +119,4 @@ const SidebarItem = ({ icon, label, isActive, onClick }) => (
 );
 
 export default LeftSidebar;
+

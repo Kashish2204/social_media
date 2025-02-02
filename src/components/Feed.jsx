@@ -58,50 +58,12 @@ const Feed = () => {
     // add more posts as needed...
   ];
 
-
-  // const filteredPosts = posts.filter(post => post.caption.includes(query));
-
-
   const filteredPosts = query ? posts.filter(post => post.caption.includes(query)) : posts;
 
 
 
   return (
-    // <div className="bg-gray-100 min-h-screen">
-    //   <div className="container mx-auto py-4">
-    //     <h1 className='text-2xl font-bold mb-4 text-center'> Feed </h1>
-    //     {posts.map(post => (
-    //       <PostCard key={post.id} post={post} />
-    //     ))}
-    //   </div>
-    // </div>
-
-    // <div className="bg-gray-100 min-h-screen flex flex-col items-center">
-    //   <h1 className="text-2xl font-bold mb-4 text-center">Reels</h1>
-    //   <div className="container mx-auto py-4">
-    //       {posts.filter(post => post.caption.includes(query)).map(post => (
-    //           <PostCard key={post.id} post={post} />
-    //       ))}
-    //   </div>
-    // </div>
-
-
-    // <div className="bg-gray-100 min-h-screen flex flex-col items-center">
-    //   <h1 className="text-2xl font-bold mb-4 text-center">Reels</h1>
-    //   <div className=" container mx-auto py-4">
-    //     {filteredPosts.length > 0 ? (
-    //       filteredPosts.map(post => (
-    //         <PostCard key={post.id} post={post} />
-    //       ))
-    //     ) : (
-    //       <p className="text-center text-gray-600 italic">your match is not found</p>
-    //     )}
-    //   </div>
-    // </div>
-
-
-
-    <div className="bg-gray-100 min-h-screen flex flex-col items-center">
+      <div className="bg-gray-100 min-h-screen flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4 text-center">Reels</h1>
       <div className="container mx-auto py-4">
         {query && filteredPosts.length === 0 ? (
@@ -123,3 +85,4 @@ const Feed = () => {
 };
 
 export default Feed;
+

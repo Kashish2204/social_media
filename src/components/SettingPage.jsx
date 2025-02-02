@@ -9,8 +9,7 @@ const SettingPage = () => {
     // Functionality for Logout
     const handleLogout = () => {
         alert("You have been logged out!");
-        setSelectedOption(null); // Reset state
-        // Add your logout logic here (e.g., clear tokens, redirect to login page, etc.)
+        setSelectedOption(null); 
     };
 
     // Functionality for Account Delete
@@ -20,8 +19,7 @@ const SettingPage = () => {
         );
         if (confirmDelete) {
             alert("Account deleted!");
-            setSelectedOption(null); // Reset state
-            // Add your delete account logic here (e.g., API call to delete account, etc.)
+            setSelectedOption(null); 
         }
     };
 
@@ -116,3 +114,4 @@ const SettingPage = () => {
 };
 
 export default SettingPage;
+
