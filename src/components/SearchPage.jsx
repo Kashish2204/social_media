@@ -5,12 +5,6 @@ const SearchPage = () => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
-//   const handleSearch = (e) => {
-//     e.preventDefault();
-//     navigate(`/feed?search=${query}`);
-//   };
-
-
     const handleSearch = (e) => {
         e.preventDefault();
         if (!query.trim()) {
@@ -44,3 +38,4 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
+
