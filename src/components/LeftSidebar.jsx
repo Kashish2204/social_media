@@ -1,25 +1,45 @@
 import React, { useState } from 'react';
-import { Home, Search, Compass, Film, MessageSquare, Bell, PlusCircle, User, Settings, Menu, LogOut } from 'lucide-react';
+import { Home, Search, Star, Film, MessageSquare, Bell, PlusCircle, User, Settings, Menu, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 import { useNavigate } from 'react-router-dom';
 
+import CreatePost from './CreatePost';
+import {IoIosSunny} from "react-icons/io";
 
-const LeftSidebar = () => {
+
+const LeftSidebar = ({isDark, SetIsDark}) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [activeItem, setActiveItem] = useState('Home');
 
     const navigate = useNavigate();
+    const[open,setOpen]=useState(false)
     
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    
+    // const handleItemClick = (label, path) => {
+
+    //     setActiveItem(label);
+    //     navigate(path);
+    // }
+
     const handleItemClick = (label, path) => {
         setActiveItem(label);
-        navigate(path);
+        if (label === 'Create') {
+            setOpen(true);  // Modal Open hoga
+        } else {
+            navigate(path);
+        }
+    };
+    
+
+    const darkModeHandler = () => {
+        SetIsDark(!isDark);
     }
+
+
 
 
 
@@ -75,6 +95,12 @@ const LeftSidebar = () => {
                         onClick={() => handleItemClick('Notifications', '/notification')}
                     />
                     <SidebarItem
+                        icon={<Star size={24} />}
+                        label="My Collection"
+                        isActive={activeItem === 'MyCollection'}
+                        onClick={() => handleItemClick('MyCollection', '/collection')}
+                    />
+                    <SidebarItem
                         icon={<PlusCircle size={24} />}
                         label="Create"
                         isActive={activeItem === 'Create'}
@@ -98,6 +124,10 @@ const LeftSidebar = () => {
                         isActive={activeItem === 'Logout'}
                         onClick={() => handleItemClick('Logout', '/logout')}
                     />
+                    <CreatePost open={open} setOpen={setOpen} isDark={isDark} SetIsDark={SetIsDark}/>
+                    <Button className="text-2xl hover:bg-gray-100 w-[270px] h-[50px] cursor-pointer rounded-lg flex justify-start font-normal dark:hover:bg-gray-700" onClick={darkModeHandler}> 
+                    <IoIosSunny />
+                         {isDark?"LightMode":"DarkMode"}</Button>
                 </div>
             )}
         </div>
