@@ -14,6 +14,9 @@ import CreatePost from "./components/CreatePost.jsx";
 import NotificationPage from "./components/NotificationPage.jsx";
 import LogIn from "./components/LogIn.jsx";
 import SignUp from "./components/Signup.jsx";
+import Logout from "./components/Logout.jsx";
+
+
 
 function App() {
 
@@ -35,7 +38,7 @@ function App() {
             <Route path="/notification" element= {<NotificationPage/>}/>
             <Route path="/login" element= {<LogIn/>}/>
             <Route path="/signup" element= {<SignUp/>}/>
-
+            <Route path="/logout" element= {<Logout/>}/>
 
 
           </Routes>

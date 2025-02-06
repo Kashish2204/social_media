@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from 'react'
 import { Dialog, DialogContent, DialogHeader } from './ui/dialog'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
@@ -5,7 +6,10 @@ import { Textarea } from './ui/textarea';
 import { readFileAsDataURL } from '@/lib/utils';
 import { Button } from './ui/button';
 import { Loader2 } from 'lucide-react';
-import { DialogTrigger } from '@radix-ui/react-dialog';
+
+
+import { DialogTitle, DialogTrigger } from '@radix-ui/react-dialog';
+import { VisuallyHidden} from '@radix-ui/react-visually-hidden';
 
 const CreatePost = ({open , setOpen,isDark,SetIsDark}) => {
  const imageRef=useRef();
@@ -47,7 +51,11 @@ const CreatePost = ({open , setOpen,isDark,SetIsDark}) => {
    <div>
      <Dialog open={open} >
       <DialogContent onInteractOutside={() => setOpen(false)} className={isDark?"bg-slate-800 text-slate-100":"bg-gray-100"}>
-        <DialogHeader className='text-center font-semibold text-xl'>Create New Post</DialogHeader>
+        {/* <DialogHeader className='text-center font-semibold text-xl'>Create New Post</DialogHeader> */}
+
+
+        <DialogHeader className='text-center font-semibold text-xl'><DialogTitle>Create New Post</DialogTitle></DialogHeader>
+
         <div className='flex gap-3 items-center'>
           <Avatar>
             <AvatarImage src="" alt="image"/>
@@ -81,23 +89,32 @@ const CreatePost = ({open , setOpen,isDark,SetIsDark}) => {
             )
           )
         }
-        
-        <Dialog>
-          <DialogTrigger>
-           <div>
-            <Button className={isDark?"bg-blue-700 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl " :"bg-blue-950 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl "}>
-              Upload Video
-            </Button>
-           </div>
-          </DialogTrigger>
-          <DialogContent className={isDark?"bg-slate-800 text-slate-100":"bg-gray-100"}>
-           <input type='file' accept='video/*' className="w-full p-2 mt-1 border border-gray-600 rounded focus:outline-none">
-           
+      
 
-           </input>
-           <Button className={isDark?"bg-blue-700 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl " :"bg-blue-950 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl "}> Post </Button>
+
+
+        <Dialog>
+          <DialogTrigger asChild>
+            <div>
+              <Button className={isDark ? "bg-blue-700 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl " : "bg-blue-950 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl "}>
+                Upload Video
+              </Button>
+            </div>
+          </DialogTrigger>
+          <DialogContent className={isDark ? "bg-slate-800 text-slate-100" : "bg-gray-100"}>
+            <DialogHeader>
+              <DialogTitle >
+                create a new post 
+              </DialogTitle>
+            </DialogHeader>
+            <input type='file' accept='video/*' className="w-full p-2 mt-1 border border-gray-600 rounded focus:outline-none" />
+            <Button className={isDark ? "bg-blue-700 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl " : "bg-blue-950 focus-visible:ring-transparent text-white hover:bg-blue-900 rounded-xl "}> 
+              Post 
+            </Button>
           </DialogContent>
         </Dialog>
+
+
         
 
       </DialogContent >

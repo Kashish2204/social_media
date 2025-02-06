@@ -1,15 +1,16 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react"; 
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const SettingPage = () => {
     const [selectedOption, setSelectedOption] = useState(null);
     const mainAreaRef = useRef(null);
     const sidebarRef = useRef(null);
-
+    const navigate = useNavigate(); // Initialize useNavigate
 
     // Functionality for Logout
     const handleLogout = () => {
-        alert("You have been logged out!");
-        setSelectedOption(null); 
+        localStorage.removeItem("authToken"); // Remove auth token (if stored)
+        navigate("/logout"); // Redirect to logout page
     };
 
     // Functionality for Account Delete
@@ -26,8 +27,8 @@ const SettingPage = () => {
     // Handle click outside the content area
     const handleClickOutside = (event) => {
         if (mainAreaRef.current && !mainAreaRef.current.contains(event.target) &&
-            sidebarRef.current && !sidebarRef.current.contains(event.target)  ) {
-            setSelectedOption(null); // Reset to show the default message
+            sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+            setSelectedOption(null); 
         }
     };
 
@@ -38,16 +39,12 @@ const SettingPage = () => {
         };
     }, []);
 
-
     return (
         <div className="flex h-screen">
-
             {/* Main Area */}
-            <div className="flex-1 relative p-6 bg-gray-50" >
-
+            <div className="flex-1 relative p-6 bg-gray-50">
                 {selectedOption && (
                     <div ref={mainAreaRef} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded p-6 w-96 text-center">
-
                         {selectedOption === "logout" && (
                             <>
                                 <h2 className="text-2xl font-bold mb-4">Logout</h2>
@@ -56,7 +53,7 @@ const SettingPage = () => {
                                 </p>
                                 <button
                                     onClick={handleLogout}
-                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-blue-600"
+                                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                                 >
                                     Confirm Logout
                                 </button>
@@ -88,7 +85,7 @@ const SettingPage = () => {
             </div>
 
             {/* Right Sidebar */}
-            <div className="w-64 border-r bg-gray-100" ref={sidebarRef} >
+            <div className="w-64 border-r bg-gray-100" ref={sidebarRef}>
                 <h2 className="text-lg font-bold p-4">Settings</h2>
                 <ul>
                     <li
@@ -114,4 +111,3 @@ const SettingPage = () => {
 };
 
 export default SettingPage;
-
